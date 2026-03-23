@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --font-mono: 'Share Tech Mono'; --font-display: 'Bebas Neue'; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #0a0a0f;
+  color: #e0e0f0;
+  font-family: 'Barlow', sans-serif;
+  min-height: 100vh;
+}
+
+/* Scanlines */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.04) 2px, rgba(0,0,0,0.04) 4px);
+  pointer-events: none; z-index: 9999;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #0a0a0f; }
+::-webkit-scrollbar-thumb { background: #1e1e32; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #c8102e; }
+
+input, select, textarea {
+  background: #0a0a0f;
+  border: 1px solid #1e1e32;
+  color: #e0e0f0;
+  font-family: 'Barlow', sans-serif;
+  transition: border-color .2s, box-shadow .2s;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 2px;
+  font-size: 14px;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #c8102e;
+  box-shadow: 0 0 0 2px rgba(200,16,46,.12);
+}
+select option { background: #0a0a0f; }
+
+.label { display: block; font-family: 'Share Tech Mono', monospace; font-size: 10px; color: #8888aa; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 6px; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp .35s ease forwards; }
+
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+.glow-red { box-shadow: 0 0 24px rgba(200,16,46,.35), 0 0 48px rgba(200,16,46,.1); }
+
+.corner::before,.corner::after {
+  content:''; position:absolute; width:10px; height:10px; border-color:#c8102e; border-style:solid;
+}
+.corner::before { top:-1px; left:-1px; border-width:2px 0 0 2px; }
+.corner::after  { bottom:-1px; right:-1px; border-width:0 2px 2px 0; }
+.corner { position: relative; }
+
+/* Tipo badges */
+.badge { display:inline-flex; align-items:center; padding:2px 8px; font-family:'Share Tech Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.1em; border:1px solid; border-radius:2px; }
