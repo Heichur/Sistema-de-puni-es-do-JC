@@ -32,10 +32,18 @@ export interface Prova {
 }
 
 export interface AuthSession {
-  adminId: string;
+  id: string;
   nome: string;
   usuario: string;
-  nivel: string;
-  avatar?: string | null;
+  nivel: 'Admin' | 'Moderador';
+  avatar: string | null;
   expiresAt: number;
+}
+
+export interface Admin {
+  nome: string;
+  usuario: string;
+  nivel: 'Admin' | 'Moderador';
+  avatar: string | null;
+  senhaHash: string;
 }
